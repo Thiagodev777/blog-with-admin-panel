@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize');
-const sequelize = require('../../config/database');
+const sequelize = require('../../config/database/conexao');
+
+const Category = require('../Category/Category');
 
 const Article = sequelize.define('articles', {
     title: {
@@ -15,5 +17,10 @@ const Article = sequelize.define('articles', {
         allowNull: false
     }
 });
+
+Category.hasMany(Article) // 1 - n
+Article.belongsTo(Category) // 1 - 1
+
+Article.sync({force: false});
 
 module.exports = Article;

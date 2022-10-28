@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = require('../../config/database');
+const sequelize = require('../../config/database/conexao');
 
 const Category = sequelize.define('categories', {
     title: {
@@ -11,5 +11,7 @@ const Category = sequelize.define('categories', {
         allowNull: false
     }
 });
+
+Category.sync({force: false});
 
 module.exports = Category;
