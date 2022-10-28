@@ -19,6 +19,12 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+const categoriesController = require('./Controllers/categories/CategoriesController');
+const articlesController = require('./Controllers/articles/ArticlesController');
+
+app.use('/', categoriesController)
+app.use('/', articlesController)
+
 app.get('/', (req, res)=>{
     res.statusCode = 200;
     res.render('index')
