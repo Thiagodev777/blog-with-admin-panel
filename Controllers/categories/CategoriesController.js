@@ -7,9 +7,12 @@ const Category = require('../../Models/Category/Category');
 
 router.get('/admin/categories', (req, res)=>{
     res.statusCode = 200;
-    res.render('admin/categories/index')
+    Category.findAll({raw: true}).then((categories)=>{
+        res.render('admin/categories/index', {
+            categories: categories
+        })
+    })
 });
-
 
 
 router.get('/admin/categories/new', (req, res)=>{
@@ -23,7 +26,7 @@ router.post('/categories/save', (req, res)=>{
             title: title,
             slug: slugify(title)
         }).then(() => {
-            res.redirect('/categories')
+            res.redirect('/admin/categories')
         })
     } else {
         res.statusCode(308);
