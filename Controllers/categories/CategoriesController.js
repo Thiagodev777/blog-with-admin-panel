@@ -8,7 +8,7 @@ router.get('/categories', (req, res)=>{
 
 router.get('/admin/categories/new', (req, res)=>{
     res.statusCode = 200;
-    res.send('rota de criar categoria')
+    res.render('admin/categories/new')
 })
 
 module.exports = router;
