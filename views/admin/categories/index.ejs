@@ -4,8 +4,9 @@
 
   <div class="container">
 
-    <h1 class="my-4">Categorias</h1>
-    <a class="btn btn-success mb-5" href="/admin/categories/new">Cadastrar nova Categoria</a>
+    <h2 class="mt-5">Categorias</h2>
+    <a class="btn btn-success my-3" href="/admin/categories/new">Cadastrar nova Categoria</a>
+    <hr>
 
     <% if(categories.length === 0) { %>
         <h2>Não a Categorias Cadastradas. Cadastre uma...</h2>
@@ -25,7 +26,10 @@
                         <th> <%= id %> </th>
                         <th> <%= title %> </th>
                         <th> <%= slug %></th>
-                        <th></th>
+                        <th>
+                            <button class="btn btn-warning">Editar</button>
+                            <button class="btn btn-danger">Deletar</button>
+                        </th>
                     </tr>
                 <% }) %> 
             </tbody>
