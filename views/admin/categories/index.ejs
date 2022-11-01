@@ -27,7 +27,7 @@
                         <th> <%= title %> </th>
                         <th> <%= slug %></th>
                         <th>
-                            <button class="btn btn-warning">Editar</button>
+                            <a href="/admin/categories/edit/<%= id %>" class="btn btn-warning">Editar</a>
 
                             <form action="/categories/delete" onsubmit="delecao(event, this)" method="POST" style="display: inline;">
                                 <input type="hidden" name="id" value=" <%= id %> ">
