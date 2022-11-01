@@ -5,7 +5,7 @@
   <div class="container">
 
     <h2 class="mt-5">Categorias</h2>
-    <a class="btn btn-success my-3" href="/admin/categories/new">Cadastrar nova Categoria</a>
+    <a class="btn btn-success my-2" href="/admin/categories/new">Cadastrar nova Categoria</a>
     <hr>
 
     <% if(categories.length === 0) { %>
@@ -28,15 +28,26 @@
                         <th> <%= slug %></th>
                         <th>
                             <button class="btn btn-warning">Editar</button>
-                            <button class="btn btn-danger">Deletar</button>
+
+                            <form action="/categories/delete" onsubmit="delecao(event, this)" method="POST" style="display: inline;">
+                                <input type="hidden" name="id" value=" <%= id %> ">
+                                <button type="submit" class="btn btn-danger">Deletar</button>
+                            </form>
                         </th>
                     </tr>
                 <% }) %> 
             </tbody>
         </table>
     <% } %>
-
   </div>
-
+  <script>
+    const delecao = (event, form) => {
+        event.preventDefault();
+        let decision = confirm('Tem certeza que deseja deletar esta Categoria?');
+        if(decision){
+            form.submit();
+        }
+    }
+  </script>
 </body>
 <%- include('../../partials/footer.ejs') %>
