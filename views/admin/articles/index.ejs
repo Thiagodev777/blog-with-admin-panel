@@ -1,0 +1,52 @@
+<%- include('../../partials/header.ejs') %>
+<body>
+  <%- include('../../partials/navbar.ejs') %>
+
+  <div class="container">
+
+    <h2 class="mt-5">Artigos</h2>
+    <a class="btn btn-success my-2" href="/admin/articles/new">Cadastrar novo Artigo</a>
+    <hr>
+    <% if(articles.length === 0) { %>
+        <h1>Não a Artigos a mostrar. cadastre um</h1>
+    <% } else { %>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>TITULO</th>
+                    <th>SLUG</th>
+                    <th>CATEGORIA</th>
+                    <th>AÇÔES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% articles.forEach(({id, title, slug, body, categoryId, category}) => { %>
+                    <tr>
+                        <td> <%= id %> </td>
+                        <td> <%= title %> </td>
+                        <td> <%= slug %> </td>
+                        <td> <%= category.title %> </td>
+                        <td>
+                            <form action="/articles/delete" onsubmit="delecao(event, this)" method="POST" style="display: inline;">
+                            <input type="hidden" name="id" value=" <%= id %> ">
+                            <button type="submit" class="btn btn-danger">Deletar</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %> 
+            </tbody>
+        </table>
+    <% } %>
+    <script>
+        const delecao = (event, form) => {
+            event.preventDefault();
+            let decision = confirm('Tem certeza que deseja deletar este Artigo?');
+            if(decision){
+                form.submit();
+            }
+        }
+      </script>
+  </div>
+</body>
+<%- include('../../partials/footer.ejs') %>
