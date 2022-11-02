@@ -8,7 +8,7 @@
         <h2>Novo Artigo</h2>
       </div>
       <div class="card-body">
-        <form action="/categories/save" method="POST">
+        <form action="/articles/save" method="POST">
           <input
             class="form-control mb-3"
             type="text"
@@ -25,7 +25,7 @@
                 <% }) %>
               </select>
           </div>
-          <textarea class="form-control my-4" id="article" placeholder="Digite o artigo aqui..." name="body"></textarea>
+          <textarea class="form-control my-4" id="article" placeholder="Digite o artigo aqui..." name="body" required></textarea>
           <button class="btn btn-success mt-3" type="submit">Cadastrar</button>
         </form>
       </div>
