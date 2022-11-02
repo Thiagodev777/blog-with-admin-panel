@@ -4,7 +4,7 @@
     
     <div class="container">
         
-        <div class="jumbotron mt-5">
+        <div class="jumbotron mt-5 shadow">
             <h1 class="display-4">Blog com Painel Administrativo</h1>
             <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
             <hr class="my-4">
@@ -12,18 +12,25 @@
             <a class="btn btn-primary btn-lg" href="#" role="button">Ver Desenvolvedor</a>
           </div>
 
-        <% articles.forEach(({id, title, slug}) => { %>
-            <div class="card shadow my-5">
-                <div class="card-header">
-                    <h2> <%= title %> </h2>
+        <% if(articles.length === 0) { %>
+            <hr>
+            <h1>Não a Artigos Cadastrados! Cadastre um...</h1>
+        <% } else { %>
+
+            <% articles.forEach(({id, title, slug}) => { %>
+                <div class="card shadow my-5">
+                    <div class="card-header">
+                        <h2> <%= title %> </h2>
+                    </div>
+                    <div class="card-body">
+                        <a href="<%= slug %>" class="btn btn-success">
+                            Ler Artigo...
+                        </a>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <a href="<%= slug %>" class="btn btn-success">
-                        Ler Artigo...
-                    </a>
-                </div>
-            </div>
-        <% }) %> 
+            <% }) %> 
+
+        <% } %> 
 
     </div>
 

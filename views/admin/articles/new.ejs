@@ -19,14 +19,18 @@
           />
           <div class="my-4">
               <label>Categoria:</label>
-              <select name="category" class="form-control">
-                <% categories.forEach(({id, title}) => { %>
-                    <option value=" <%= id %> "> <%= title %> </option>
-                <% }) %>
-              </select>
+              <% if(categories.length === 0) { %>
+                <h3> Voce ainda nao Cadastrou nenhuma Categoria! <a href="/admin/categories/new" class="btn btn-warning">Cadastre uma aqui</a></h3>
+              <% } else { %>
+                <select name="category" class="form-control mb-4">
+                  <% categories.forEach(({id, title}) => { %>
+                      <option value=" <%= id %> "> <%= title %> </option>
+                  <% }) %>
+                </select>
+                <textarea class="form-control my-4" id="article" placeholder="Digite o artigo aqui..." name="body"></textarea>
+                <button class="btn btn-success mt-4" type="submit">Cadastrar</button>
+              <% } %>
           </div>
-          <textarea class="form-control my-4" id="article" placeholder="Digite o artigo aqui..." name="body"></textarea>
-          <button class="btn btn-success mt-3" type="submit">Cadastrar</button>
         </form>
       </div>
     </div>
