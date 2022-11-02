@@ -21,11 +21,11 @@
               <label>Categoria:</label>
               <select name="category" class="form-control">
                 <% categories.forEach(({id, title}) => { %>
-                    <option value="<%= id %> "> <%= title %> </option>
+                    <option value=" <%= id %> "> <%= title %> </option>
                 <% }) %>
               </select>
           </div>
-          <textarea class="form-control my-4" id="article" placeholder="Digite o artigo aqui..." name="body" required></textarea>
+          <textarea class="form-control my-4" id="article" placeholder="Digite o artigo aqui..." name="body"></textarea>
           <button class="btn btn-success mt-3" type="submit">Cadastrar</button>
         </form>
       </div>

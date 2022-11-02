@@ -36,7 +36,13 @@ app.use('/', articlesController)
 // Router home
 app.get('/', (req, res)=>{
     res.statusCode = 200;
-    res.render('index')
+    
+    Article.findAll().then((articles)=>{
+        res.render('index', {
+            articles: articles
+        })
+    })
+
 })
 
 

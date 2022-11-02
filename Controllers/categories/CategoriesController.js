@@ -19,6 +19,7 @@ router.get('/admin/categories/new', (req, res)=>{
     res.statusCode = 200;
     res.render('admin/categories/new')
 })
+
 router.post('/categories/save', (req, res)=>{
     let { title } = req.body;
     if(title != undefined){
