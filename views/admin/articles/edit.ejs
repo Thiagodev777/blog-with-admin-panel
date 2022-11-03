@@ -2,44 +2,56 @@
 <body>
   <%- include('../../partials/navbar.ejs') %>
 
-  <div class="container">
+  <div class="container"> 
     <div class="card shadow border rounded mt-5">
       <div class="card-header">
-        <h2>Novo Artigo</h2>
+        <h2>Editar Artigo</h2>
       </div>
       <div class="card-body">
-        <form action="/articles/save" method="POST">
+        <form action="/articles/update" method="POST">
           <input
             class="form-control mb-3"
             type="text"
             name="title"
             placeholder="Defina o titulo do Artigo..."
             autofocus
+            value="<%= article.title %>"
             required
           />
           <div class="my-4">
-              <label>Categoria:</label>
-              <% if(categories.length === 0) { %>
-                <h3 class="error"> Voce ainda nao Cadastrou nenhuma Categoria! <a href="/admin/categories/new" class="btn btn-warning">Cadastre uma aqui</a></h3>
-              <% } else { %>
+                <label>Categoria:</label>
                 <select name="category" class="form-control mb-4">
                   <% categories.forEach(({id, title}) => { %>
+
+                    <% if(id == article.categoryId) { %>
+                      <option value=" <%= id %> " selected> <%= title %> </option>
+                    <% } else { %>
                       <option value=" <%= id %> "> <%= title %> </option>
+                    <% } %>
+
                   <% }) %>
                 </select>
                 <textarea class="form-control my-4" id="article" placeholder="Digite o artigo aqui..." name="body"></textarea>
-                <button class="btn btn-success mt-4" type="submit">Cadastrar</button>
-              <% } %>
+                <input type="hidden" name="id" value=" <%= article.id %> ">
+                <button class="btn btn-success mt-4" type="submit">Salvar</button>
           </div>
         </form>
       </div>
     </div>
   </div>
+
+  <div id="content" style="display: none;">
+    <%- article.body %>
+  </div>
+
   <script src="https://cdn.tiny.cloud/1/6jffl5wi99nrkr7swy7ceq6kq7xlq9poq5pvjv82vjvysn7v/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
   <script>
     tinymce.init({
       language: 'pt_BR', 
       selector: '#article',
+      init_instance_callback: () => {
+        tinymce.get("article").setContent($("#content").html())
+      },
       plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect',
       toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
       tinycomments_mode: 'embedded',

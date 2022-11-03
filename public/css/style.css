@@ -1,3 +1,19 @@
 body {
-    background-color: #ddd;
+    background-color: #fff;
+}
+.error {
+    color: #f00;
+    animation: pisca 2s infinite;
+}
+
+@keyframes pisca {
+    0% {
+        color: #f00;
+    }
+    50% {
+        color: #000;
+    } 
+    100% {
+        color: #f00;
+    }
 }
