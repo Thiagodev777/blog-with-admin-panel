@@ -25,12 +25,15 @@ app.use(express.json());
 // Models
 const Article = require('./Models/Article/Article');
 const Category = require('./Models/Category/Category');
+const User = require('./Models/User/User')
 
 // Controllers
 const categoriesController = require('./Controllers/categories/CategoriesController');
 const articlesController = require('./Controllers/articles/ArticlesController');
+const usersController = require('./Controllers/users/UsersController')
 app.use('/', categoriesController)
 app.use('/', articlesController)
+app.use('/', usersController)
 
 
 // Router home
