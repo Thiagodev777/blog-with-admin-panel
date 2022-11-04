@@ -42,6 +42,10 @@ app.use('/', categoriesController)
 app.use('/', articlesController)
 app.use('/', usersController)
 
+app.use(session({
+    secret: process.env.SECRET_SESSION,
+    cookie: { maxAge: 3000 }
+}))
 
 // Router home
 app.get('/', (req, res)=>{

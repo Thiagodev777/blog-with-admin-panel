@@ -9,7 +9,8 @@
             <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
             <hr class="my-4">
             <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Ver Desenvolvedor</a>
+            <a class="btn btn-primary btn-lg" target="_blank" href="https://github.com/Thiagodev777" role="button">Ver Desenvolvedor</a>
+            <a href="/login" class="btn btn-danger btn-lg">Login Administrador</a>
           </div>
 
         <% if(articles.length === 0) { %>
@@ -30,13 +31,13 @@
                 </div>
             <% }) %> 
 
-        <% } %> 
-
-        <div class="row my-5">
-            <div class="col col-12">
-                <a style="float: right;" href="/articles/page/2">Next >>></a>
+            <div class="row my-5">
+                <div class="col col-12">
+                    <a style="float: right;" href="/articles/page/2">Next >>></a>
+                </div>
             </div>
-        </div>
+
+        <% } %> 
 
     </div>
 
