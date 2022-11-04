@@ -6,6 +6,13 @@ const app = express();
 const dotenv = require('dotenv');
 dotenv.config();
 
+// Session Express
+const session = require('express-session');
+app.use(session({
+    secret: process.env.SECRET_SESSION,
+    cookie: { maxAge: 30000 }
+}))
+
 // Authentication in the database
 const connection = require('./config/database/conexao');
 connection.authenticate().then(()=>{
