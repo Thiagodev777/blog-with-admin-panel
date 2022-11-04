@@ -10,7 +10,7 @@ dotenv.config();
 const session = require('express-session');
 app.use(session({
     secret: process.env.SECRET_SESSION,
-    cookie: { maxAge: 30000 }
+    cookie: { maxAge: 3600000 }
 }))
 
 // Authentication in the database
