@@ -6,13 +6,6 @@ const app = express();
 const dotenv = require('dotenv');
 dotenv.config();
 
-// Session Express
-const session = require('express-session');
-app.use(session({
-    secret: process.env.SECRET_SESSION,
-    cookie: { maxAge: 3600000 }
-}))
-
 // Authentication in the database
 const connection = require('./config/database/conexao');
 connection.authenticate().then(()=>{
@@ -29,23 +22,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
+// session settings
+const session = require('express-session');
+app.use(session({
+    secret: process.env.SECRET_SESSION,
+    cookie: { maxAge: 3600000 }
+}))
+
 // Models
 const Article = require('./Models/Article/Article');
 const Category = require('./Models/Category/Category');
-const User = require('./Models/User/User')
+const User = require('./Models/User/User');
 
 // Controllers
 const categoriesController = require('./Controllers/categories/CategoriesController');
 const articlesController = require('./Controllers/articles/ArticlesController');
-const usersController = require('./Controllers/users/UsersController')
+const usersController = require('./Controllers/users/UsersController');
 app.use('/', categoriesController)
 app.use('/', articlesController)
 app.use('/', usersController)
-
-app.use(session({
-    secret: process.env.SECRET_SESSION,
-    cookie: { maxAge: 3000 }
-}))
 
 // Router home
 app.get('/', (req, res)=>{
@@ -54,14 +49,12 @@ app.get('/', (req, res)=>{
         order: [ ['id', 'DESC'] ],
         limit: 4
     }).then((articles)=>{
-
         Category.findAll().then((categories) => {
             res.render('index', {
                 articles: articles,
                 categories: categories
             })
         })
-
     })
 })
 

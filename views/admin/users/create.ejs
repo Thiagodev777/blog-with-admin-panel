@@ -1,31 +1,25 @@
 <%- include('../../partials/header.ejs') %> 
-<%- include('../../partials/navbar.ejs') %> 
-
 <body>
-    
+    <%- include('../../partials/loginnavbar.ejs') %> 
     <div class="container">
-        <div class="card mt-5">
+        <div class="card mt-5 shadow bg-dark text-white mx-auto">
             <div class="card-header">
-                <h2>Criação de Usuario</h2>
+                <h2 class="text-center text-white fw-bold">CADASTRO DE USUARIO</h2>
             </div>
             <div class="card-body">
                 <form action="/users/create" method="POST">
                     <div class="my-2">
                         <label for="">Email:</label>
-                        <input class="form-control" type="email" name="email" placeholder="email@exemplo.com">
+                        <input class="form-control py-4" type="email" name="email" placeholder="email@exemplo.com" maxlength="40" required>
                     </div>
-
-                    <div class="my-3>
+                    <div class="my-2">
                         <label for="">Senha:</label>
-                        <input class="form-control" type="password" name="password" placeholder="Digite sua senha...">
+                        <input class="form-control py-4" type="password" name="password" placeholder="******** (max-8)" maxlength="8" required>
                     </div>
-                    
-                    <button type="submit" class="btn btn-block btn-success mt-4">Criar</button>
+                    <button type="submit" class="btn btn-block btn-success mt-4 py-2">Cadastrar</button>
                 </form>
             </div>
         </div>
     </div>
-
 </body>
-
 <%- include('../../partials/footer.ejs') %> 

@@ -4,18 +4,18 @@
     
     <div class="container">
         
-        <div class="jumbotron mt-5 shadow">
-            <h1 class="display-4">Blog com Painel Administrativo</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <div class="jumbotron mt-5 bg-dark text-white">
+            <h1 class="display-4">Bem vindo ao Blog!</h1>
+            <p class="lead">Blog com painel Administrativo para publicar e postar dos mais diversos assuntos do mundo dev !!</p>
             <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <a class="btn btn-primary btn-lg" target="_blank" href="https://github.com/Thiagodev777" role="button">Ver Desenvolvedor</a>
-            <a href="/login" class="btn btn-danger btn-lg">Login Administrador</a>
+            <p>Veja o criador ou faça login como Administrador para fazer e gerenciar suas primeiras postagens!</p>
+            <a class="btn btn-primary btn-lg my-2 ml-3 shadow" target="_blank" href="https://github.com/Thiagodev777" role="button">Ver Desenvolvedor</a>
+            <a href="/login" class="btn btn-danger btn-lg ml-3 my-2 shadow">Login Administrador</a>
           </div>
 
         <% if(articles.length === 0) { %>
             <hr>
-            <h1>Não a Artigos Cadastrados! Cadastre um...</h1>
+            <h1 class="error">Não a Artigos Cadastrados! Cadastre um...</h1>
         <% } else { %>
 
             <% articles.forEach(({id, title, slug}) => { %>
