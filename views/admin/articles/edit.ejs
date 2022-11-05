@@ -3,12 +3,13 @@
   <%- include('../../partials/navbar.ejs') %>
 
   <div class="container"> 
-    <div class="card shadow border rounded mt-5">
+    <div class="card shadow border rounded mt-5 bg-dark text-white">
       <div class="card-header">
         <h2>Editar Artigo</h2>
       </div>
       <div class="card-body">
         <form action="/articles/update" method="POST">
+          <label for="">Titulo:</label>
           <input
             class="form-control mb-3"
             type="text"

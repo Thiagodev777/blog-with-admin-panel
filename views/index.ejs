@@ -9,7 +9,7 @@
             <p class="lead">Blog com painel Administrativo para publicar e postar dos mais diversos assuntos do mundo dev !!</p>
             <hr class="my-4">
             <p>Veja o criador ou faça login como Administrador para fazer e gerenciar suas primeiras postagens!</p>
-            <a class="btn btn-primary btn-lg my-2 ml-3 shadow" target="_blank" href="https://github.com/Thiagodev777" role="button">Ver Desenvolvedor</a>
+            <a class="btn btn-primary btn-lg my-2 ml-3 my-2" target="_blank" href="https://github.com/Thiagodev777" role="button">Ver Desenvolvedor</a>
             <a href="/login" class="btn btn-danger btn-lg ml-3 my-2 shadow">Login Administrador</a>
           </div>
 
@@ -19,12 +19,12 @@
         <% } else { %>
 
             <% articles.forEach(({id, title, slug}) => { %>
-                <div class="card shadow my-5">
+                <div class="card shadow my-5 bg-dark text-white">
                     <div class="card-header">
                         <h2> <%= title %> </h2>
                     </div>
                     <div class="card-body">
-                        <a href="<%= slug %>" class="btn btn-success">
+                        <a href="/<%= slug %>" class="btn btn-danger">
                             Ler Artigo...
                         </a>
                     </div>
@@ -33,7 +33,9 @@
 
             <div class="row my-5">
                 <div class="col col-12">
-                    <a style="float: right;" href="/articles/page/2">Next >>></a>
+                    <% if(articles.length >= 4){ %>
+                        <a class="btn btn-danger" style="float: right;" href="/articles/page/2">Next >>></a>
+                    <% } %>
                 </div>
             </div>
 

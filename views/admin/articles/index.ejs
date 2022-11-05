@@ -10,10 +10,9 @@
     <% if(articles.length === 0) { %>
         <h2>Não a Artigos Cadastrados! Cadastre um...</h2>
     <% } else { %>
-        <table class="table table-bordered">
+        <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>TITULO</th>
                     <th>SLUG</th>
                     <th>CATEGORIA</th>
@@ -23,7 +22,6 @@
             <tbody>
                 <% articles.forEach(({id, title, slug, body, categoryId, category}) => { %>
                     <tr>
-                        <td> <%= id %> </td>
                         <td> <%= title %> </td>
                         <td> <%= slug %> </td>
                         <td> <%= category.title %> </td>

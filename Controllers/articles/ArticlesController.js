@@ -1,9 +1,16 @@
 const express = require('express');
 const router = express.Router();
+
+// Models
 const Article = require('../../Models/Article/Article');
-const Category = require('../../Models/Category/Category')
+const Category = require('../../Models/Category/Category');
+
+// Slugify
 const slugify = require('slugify');
-const adminAuth = require('../../config/middlewares/adminAuth')
+
+// Middlewares
+const adminAuth = require('../../config/middlewares/adminAuth');
+
 
 router.get('/admin/articles', adminAuth, (req, res)=>{
     res.statusCode = 200;
@@ -22,6 +29,8 @@ router.get('/admin/articles/new', adminAuth, (req, res)=>{
         res.render("admin/articles/new", {
             categories: categories
         })
+    }).catch((err) => {
+        console.log('Ocorreu um erro interno...');
     })
 })
 
@@ -84,6 +93,7 @@ router.post('/articles/update', (req, res) => {
 })
 
 router.get('/articles/page/:num', (req, res) => {
+    res.statusCode = 200;
     let page = req.params.num
     let offset = 0;
     if(isNaN(page) || page == 1){
@@ -109,6 +119,8 @@ router.get('/articles/page/:num', (req, res) => {
         }
         Category.findAll().then((categories) => {
             res.render('admin/articles/page', {result: result, categories, categories})
+        }).catch((err) => {
+            res.redirect('/')
         })
     })
 })

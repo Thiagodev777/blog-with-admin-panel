@@ -9,7 +9,6 @@ const bcrypt = require('bcryptjs');
 const adminAuth = require('../../config/middlewares/adminAuth');
 
 
-//  LISTAGEM DE USUARIOS + CRIAÇÃO DE USUARIOS
 router.get('/admin/users', adminAuth, (req, res) => {
     res.statusCode = 200;
     User.findAll({raw: true, order: [ ['id', 'DESC'] ]}).then((users) => {
@@ -38,6 +37,7 @@ router.post('/users/create', (req, res) => {
                 email: email,
                 password: hash
             }).then(() => {
+                req.session.user = undefined
                 res.redirect('/login')
             }).catch((err) => {
                 res.redirect('/')
@@ -55,7 +55,6 @@ router.post('/users/create', (req, res) => {
 })
 
 
-// AUTENTICAÇÃO E SEGURANÇA DE LOGIN
 router.get('/login', (req, res) => {
     res.statusCode = 200;
     res.render('admin/users/login')

@@ -3,12 +3,13 @@
   <%- include('../../partials/navbar.ejs') %>
 
   <div class="container">
-    <div class="card shadow border rounded mt-5">
+    <div class="card shadow border rounded mt-5 bg-dark text-white">
       <div class="card-header">
         <h2>Novo Artigo</h2>
       </div>
       <div class="card-body">
         <form action="/articles/save" method="POST">
+          <label for="">Titulo:</label>
           <input
             class="form-control mb-3"
             type="text"
@@ -20,7 +21,7 @@
           <div class="my-4">
               <label>Categoria:</label>
               <% if(categories.length === 0) { %>
-                <h3 class="error"> Voce ainda nao Cadastrou nenhuma Categoria! <a href="/admin/categories/new" class="btn btn-warning">Cadastre uma aqui</a></h3>
+                <h3 class="error-dark"> Voce ainda nao Cadastrou nenhuma Categoria! <a href="/admin/categories/new" class="btn btn-warning">Cadastre uma aqui</a></h3>
               <% } else { %>
                 <select name="category" class="form-control mb-4">
                   <% categories.forEach(({id, title}) => { %>

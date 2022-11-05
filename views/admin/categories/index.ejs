@@ -1,43 +1,40 @@
 <%- include('../../partials/header.ejs') %>
 <body>
   <%- include('../../partials/navbar.ejs') %>
-
   <div class="container">
-
     <h1 class="mt-5">Categorias</h1>
     <a class="btn btn-success my-2" href="/admin/categories/new">Cadastrar nova Categoria</a>
     <hr>
-
     <% if(categories.length === 0) { %>
         <h2>Não a Categorias Cadastradas! Cadastre uma...</h2>
     <% } else { %>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>TITULO</th>
-                    <th>SLUG</th>
-                    <th>AÇÔES</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% categories.forEach(({id, title, slug})=>{ %>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <th> <%= id %> </th>
-                        <th> <%= title %> </th>
-                        <th> <%= slug %></th>
-                        <th>
-                            <a href="/admin/categories/edit/<%= id %>" class="btn btn-warning">Editar</a>
-
-                            <form action="/categories/delete" onsubmit="delecao(event, this)" method="POST" style="display: inline;">
-                                <input type="hidden" name="id" value=" <%= id %> ">
-                                <button type="submit" class="btn btn-danger">Deletar</button>
-                            </form>
-                        </th>
+                        <th>TITULO</th>
+                        <th>SLUG</th>
+                        <th>AÇÔES</th>
                     </tr>
-                <% }) %> 
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <% categories.forEach(({id, title, slug})=>{ %>
+                        <tr>
+                            <td> <%= title %> </td>
+                            <td> <%= slug %></td>
+                            <td>
+                                <a href="/admin/categories/edit/<%= id %>" class="btn btn-warning">Editar</a>
+    
+                                <form action="/categories/delete" onsubmit="delecao(event, this)" method="POST" style="display: inline;">
+                                    <input type="hidden" name="id" value=" <%= id %> ">
+                                    <button type="submit" class="btn btn-danger">Deletar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %> 
+                </tbody>
+            </table>
+        </div>
     <% } %>
   </div>
   <script>

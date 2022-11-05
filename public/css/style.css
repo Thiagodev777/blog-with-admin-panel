@@ -5,6 +5,11 @@ body {
     color: #f00;
     animation: pisca 2s infinite;
 }
+.error-dark {
+    color: #f00;
+    text-align: center;
+    animation: pisca-dark 4s infinite;
+}
 
 @keyframes pisca {
     0% {
@@ -15,5 +20,18 @@ body {
     } 
     100% {
         color: #f00;
+    }
+}
+
+@keyframes pisca-dark {
+    0% {
+        color: #fff;
+    }
+    50% {
+        color: yellow;
+        font-size: 1.5rem;
+    } 
+    100% {
+        color: #fff;
     }
 }

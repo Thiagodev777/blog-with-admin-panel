@@ -51,6 +51,8 @@ router.post('/categories/save', (req, res)=>{
             slug: slugify(title)
         }).then(() => {
             res.redirect('/admin/categories')
+        }).catch((err) => {
+            console.log('Ocorreu um erro interno...');
         })
     } else {
         res.statusCode(308);
@@ -64,6 +66,8 @@ router.post('/categories/update', (req, res)=>{
         where: { id: id }
     }).then(() => {
         res.redirect('/admin/categories');
+    }).catch((err) => {
+        console.log('Ocorreu um erro interno...');
     })
 })
 
