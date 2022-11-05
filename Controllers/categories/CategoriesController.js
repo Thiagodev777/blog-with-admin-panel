@@ -3,8 +3,11 @@ const router = express.Router();
 
 // Slugify
 const slugify = require('slugify');
+
 // Model
 const Category = require('../../Models/Category/Category');
+const Article = require('../../Models/Article/Article');
+
 // Middlewares
 const adminAuth = require('../../config/middlewares/adminAuth');
 
@@ -36,7 +39,6 @@ router.get("/admin/categories/edit/:id", adminAuth, (req, res)=>{
         res.redirect('/admin/categories');
      })
 })
-
 
 router.get('/admin/categories/new', adminAuth, (req, res)=>{
     res.statusCode = 200;
@@ -75,10 +77,16 @@ router.post('/categories/delete', (req, res) => {
     let { id } = req.body
     if(id !== undefined){
         if(!isNaN(id)){
-            Category.destroy({ where: { id: id } }).then(()=>{
-                res.redirect('/admin/categories')
-            }).catch((err) => {
-                console.log('Ocorreu um erro interno...');
+            Article.findOne({where: {categoryId: id}}).then((article) => {
+                if(article){
+                    res.redirect('/admin/categories')
+                } else {
+                    Category.destroy({ where: { id: id } }).then(()=>{
+                        res.redirect('/admin/categories')
+                    }).catch((err) => {
+                        console.log('Ocorreu um erro interno...');
+                    })
+                }
             })
         }else {
             res.redirect('/admin/categories')
