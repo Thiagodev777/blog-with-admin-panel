@@ -12,6 +12,7 @@ Some features:
 
 * login system with jwt, allowing easy management of categories and posts. 🔒
 * Find the subjects you want most with the category system 📑
+* It has a powerful text editor to make the best publications 🖊️
 * integrated with a powerful database for better management of all the information of your posts 🗂️
 
 Use the `Readme.md` to get started.
